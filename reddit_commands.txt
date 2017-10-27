@@ -1,0 +1,77 @@
+ 1943  rails new reddit 
+ 1944  ls -al 
+ 1945  cd reddit/
+ 1946  ls -al 
+ 1947  rails s
+ 1948  git init 
+ 1949  git add .
+ 1950  git commit -m "Initial Commit"
+ 1961  git checkout -b links_scaffold
+ 1963  rails g scaffold Link title:string url:string
+ 1964  rake db:migrate
+ 1965  rails s
+ 1931  git status
+ 1932  git add .
+ 1933  git commit -m "Generate Link Scaffold"
+ 1934  git checkout master 
+ 1935  git merge links_scaffold 
+ 1936  git checkout -b add_users
+ 1937  bundle install 
+ 1938  rails g devise:install
+ 1939  rails g devise:views
+ 1940  rails g devise User
+ 1941  rake db:migrate
+ 1942  rails c
+ 1944  git add . 
+ 1945  git commit -m "Add devise and create User model"
+ 1946  rails c
+ 1947  rails g migration add_user_id_to_links user_id:integer:index
+ 1948  rake db:migrate
+ 1949  rails c
+ 1950  git status
+ 1951  git add .
+ 1952  git commit -m "Add Association between Link and User"
+ 1953  rails c
+ 1954  git stauts 
+ 1955  git status
+ 1956  git add .
+ 1957  git commit -m "Authorization on links"
+ 1958  git checkout master 
+ 1959  git merge add_users 
+ 1960  git checkout -b add_bootstrap
+ 1961  bundle install 
+ 1962  git status
+ 1963  git add .
+ 1964  git commit -m "Add structure and basic styling"
+ 1965  git checkout master 
+ 1966  git merge add_bootstrap 
+ 1967  git log --oneline --graph 
+ 1968  git checkout -b add_acts_as_votable
+ 1969  bundle install 
+ 1971  rails g acts_as_votable:migration
+ 1972  rake db:migrate
+ 1973  rails c
+ 1974  git status
+ 1975  git add .
+ 1976  git commit -m "Added and setup acts_as_votable"
+ 1977  git checkout master 
+ 1978  git merge add_acts_as_votable 
+ 1979  git checkout -b add_comments
+ 1980  rails generate scaffold Comment link_id:integer:index body:text user:references --skip-stylesheets
+ 1981  rake db:migrate
+ 1982  bundle install 
+ 1983  rake routes
+ 1984  rake db:migrate
+ 1985  git add .
+ 1986  git commit -m "Add Comments"
+ 1987  git checkout master 
+ 1988  git merge add_comments 
+ 1989  git checkout -b add_name_to_users
+ 1990  rails g migration add_name_to_users name:string
+ 1992  rake db:migrate
+ 1993  git status
+ 1994  git add .
+ 1995  git commit -m "Add name to Users"
+ 1996  git checkout master 
+ 1997  git merge master add_name_to_users 
+

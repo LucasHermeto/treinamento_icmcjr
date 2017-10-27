@@ -1,0 +1,88 @@
+Model:
+	rails generate model <name> ...
+	Datatypes:
+		:string, :text, :integer, :binary, :boolean, :data, :time,
+		:datetime, :timestamp, :decimal, :float, :primary_key
+	When created run: rake db:migrate
+
+	Relationship:
+		belongs_to (many-to-one or one-to-one) 
+		has_many (one-to-many)
+		has_and_belongs_to_many (many-to-many)
+		has_one (one-to-one) (bidirectional)
+	
+	On rails terminal we can get the classes using:
+		@link = Link.first
+		@link = Link.last
+		@link = Link.find(2)
+		@link.user
+	If we wanna update:
+		@link.user = User.first
+		@link.save
+
+	Tips:
+		Becareful with eager loading
+		use: *.includes(:example, :example)
+		or: *.include(:client, restaurant: {dishes: :recipe})
+
+		We can create a Named Scope
+		class * < ActiveRecord::Base
+			scope :massas, where(specialty: 'massas')
+			scope :recentes, where(["created_at > ?", 3.months.ago])
+		end
+		Restaurant.massas
+
+		especialidades = %w{massas japonês vegetariano}
+
+		50.times do |i|
+			Restaurante.create!(
+				nome: "Restaurante #{i}",
+				endereco: "Rua #{i} de setembro",
+				especialidade: especialidades.sample
+			)
+		end
+
+Controller:
+	rails generate controller <name> (actions)
+
+View: 
+	The view content are created on the generation of the controller
+
+
+Routes:
+	REST Architecture
+	Named Routes:
+		restaurants_path	# => "/restaurants"
+		new_restaurants_path	# => "/restaurants/new"
+		edit_restaurants_path(3)# => "/restaurants/3/edit"
+	Commands:
+		rails generate resource comentario
+		## If scaffold used the REST will be created
+	Add Actions Extras:
+		resources :comments do
+			member do 
+				post :disable
+			end
+		# url: /comments/:id/disable
+		# named_route: disable_comment_path
+		end
+
+		resources :comments do
+			collection do
+				get :feed
+			end
+		# url: /comments/feed
+		# named_route: feed_comments_path
+		end
+
+	Using Nested Resources (117book - 126pdf):
+		resources :restaurants do
+			resources :qualifications
+		end
+		# GET /restaurant/:r_id/qualidications:controller...
+
+Another Commands:
+	rails server -> iniciate the server on port 3000
+	rake routes -> list the routes from config/routes.rb
+	rails c -> open the ruby on rails terminal
+	bundle install -> when you add new gems to Gemfile

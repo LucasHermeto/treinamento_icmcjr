@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Restaurantes</title>
+  </head>
+  <body>
+    <%= link_to "Home", controller: "restaurants", action: "index" %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Specialty</th>
+      </tr>
+      <% @restaurants.each do |r| %>
+      <tr>
+        <td><%= r.name %></td>
+        <td><%= r.address %></td>
+        <td><%= r.specialty %></td>
+        <td>
+        <%= link_to "Show", action: "show", id: r %>
+        </td>
+        <td>
+        <%= link_to "Edit", action: "edit", id: r %>
+        </td>
+        <td>
+        <%= link_to "Destroy", {action: "destroy", id: r },
+                              {method: 'delete'}%>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+    <br>
+    <%= link_to 'New', action: 'new' %>
+  </body>
+</html>

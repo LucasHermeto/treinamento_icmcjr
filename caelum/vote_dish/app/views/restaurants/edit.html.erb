@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit</title>
+  </head>
+  <body>
+    <h1>Edit</h1>
+    <%= form_for @restaurant do |f| %>
+      Nome: <%= f.text_field :name %><br>
+      Endereço: <%= f.text_field :address %><br>
+      Especialidade: <%= f.text_field :specialty %><br>
+      <%= f.submit %>
+    <% end %>
+  </body>
+</html>
