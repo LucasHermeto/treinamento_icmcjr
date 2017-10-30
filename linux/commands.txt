@@ -1,0 +1,143 @@
+adduser - create a new user
+mkdir - make a directory
+ln - create file link
+ls - list the directories
+less - read the file showing less information 
+     (can be use after "|" to show less  text from a command)
+mv, cp, rm, rmdir - move, copy, remove, remove directory
+scp - secutiry copy a file from another computer
+cat - print all the texts of the file. Ex cat file.txt
+wc - print some info of a file. Ex: wc file.txt 
+   (number of lines, number of words, number of bytes)
+nl - show the number lines of a file
+diff - compare two or more files and show the difference
+nano - open a text editor on the terminal
+evn - show all the enviroment variables
+pwd - print your actual path
+file - print the type of the file. Ex> file file.txt
+grep - print lines matching a pattern 
+date - print the date
+host 'google.com' - print the ip and others info
+telnet 'www.google.com' - do POST/GET 
+nslookup 'google.com' - get Server information
+curl - copy a file from an url. 
+     Ex: curl -o things.zip http://udacity.github.io/ud595-shell/stuff.zip
+hostname - print the hostname
+uname - print the OS info
+uptime - show some current info of the computer
+who - show the users logged
+top - show the cpu processes
+iostat - show cpu input and output statistics
+passwd - change the password
+man - open a manual of the command you want
+echo - print something you want
+glob - special character (* ?), Ex: *.html or pass?d
+bc - use as a calculator
+expr - 'calculator'
+ssh-keygen - generate a public key
+chmod - change the file permission
+chown - change the owner permission
+chgrp - change the group permission
+df - report file system disk space usage
+fsck - check and repair a Linux filesystem
+crontab - create a job to be executed at some time or day
+
+//Text-Fu
+1."echo Hello World > example.txt" - this command will insert
+"Hello World" into the example.txt file. The ">" can be use with
+differents commands like: "ls > example.txt"
+//The '>' command override what is write, if you only want to append use '>>'
+2."cat < example1.txt > example2.txt" - "copy" example1 to example2
+3."ls | tee example.txt" - copy the output off "ls" to the file example.txt
+4. cut - remove sections from each line of files
+5. paste - mege lines of files
+6. join - join files that have the numeration
+7. sort - sort lines of text files
+8. tr - translate or delete characters
+   Ex: tr a-z A-Z
+9. uniq - report or omit repeated lines
+
+//Examples Text-Fu
+sort deserts.txt | uniq > uniq-deserts.txt
+cat lucas.txt | wc | cat > lucas-properties.txt
+grep -R Arctic /home/ccurse/workspace/geography
+     >>/home/ccuser/workspace/geography/deserts.txt:Arctic Desert
+     >>/home/ccuser/workspace/geography/oceans.txt:Arctic Ocean
+     >>/home/ccuser/workspace/geography/uniq-deserts.txt:Arctic Desert
+     >>/home/ccuser/workspace/geography/continents.txt:Arctic Ocean
+sed 's/snow/rain/' forests.txt
+sed 's/snow/rain/g' forests.txt
+
+//keyboards shortcuts
+press 'ctrl+r' to do a reverse search on the history
+press 'ctrl+a' to go to the start of the line
+press 'ctrl+e' to go to the end of the line
+press 'ctrl+u' to delete from cursor to the start of the line
+press 'ctrl+k' to delete from cursor to the end of the line
+press 'tab' to complete the text that you want to type
+
+//Configuration bash
+If you want to configurate the bash(terminal) to appear like you want modify the
+~/.bashrc file.
+
+//Share the public key
+After creating a public key with ssh-keygen you copy the text on
+'.ssh/linuxCourse' and in the other computer you create an directory called
+.ssh in the home than type 'touch .ssh/authorized_keys' to create an file to
+store all the keys. Add the copied key from the other computer to this file,
+than type 'chmod 700 .ssh' and 'chmod 644 .ssh/authorized_keys' to prevent
+from an attack.
+
+//Allow only logins with the public key
+To login with an public key - 'ssh student@127.0.0.1 -p 2222 -i ~/.ssh/linuxCourse
+On the computer that you want to config type 'sudo nano /etc/ssh/sshd_config'
+and edit 'PasswordAuthentication' to 'no'. Then type 'sudo service ssh restart'.
+
+//Permission simbles
+r(read) -> 4
+w(write) -> 2
+x(execute) -> 1
+
+//User not allowed to use sudo
+If you create a new user and the user is not allowed to use de sudo command,
+you type (using an user that can use sudo) 'sudo cat /etc/sudoers, this
+command will list all the groups that are allowed to use sudo, using ubuntu
+go to the end of the text and see an directory that you can access to add a
+new user. Than you will type something like this
+'sudo cp /ect/sudoers.d/hermeto /etc/sudoers.d/student' and edit the name
+inside the file sudo 'sudo nano /etc/sudoers.d/student'.With other Linux OS
+you just use the command sudo vim /etc/sudoer to edit the text and add the
+user informations below the root
+
+//Configurating a firewall to a server
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh // Remember allowing ssh,port 2222 if you're using 'ssh' connection
+sudo udw allow 2222/tcp
+sudo ufw allow www
+sudo ufw enable
+
+//Ports
+Http - 80
+Https - 443
+SSH - 22
+FTP - 21
+POP3 - 110
+SMTP - 25
+
+//Kill process that use port
+fuser -k 8080/tcp
+
+//Changing tomcat port 8080 to 80
+apt-get install authbind
+-- First set AUTHBIND=yes in /etc/default/tomcat7 file
+sudo touch /etc/authbind/byport/80
+sudo chmod 500 /etc/authbind/byport/80
+sudo chown tomcat7 /etc/authbind/byport/80 
+
+//Display all the wireless networks
+iwlist wlan0 scan
+
+//Display the ip connected in the wireless network
+arp-scan --interface=wlan0 --localnet 
+nmap -sP 192.168.1.0/24

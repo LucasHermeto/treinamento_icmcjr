@@ -1,0 +1,4 @@
+Possue documentação e livro de apoio: https://git-scm.com/
+Vídeo Aula: https://br.udacity.com/course/how-to-use-git-and-github--ud775
+Treinamento prático: https://try.github.io/levels/1/challenges/1
+Treinamento prático: https://www.codecademy.com/learn/learn-git

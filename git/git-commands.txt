@@ -1,0 +1,37 @@
+repository -> where the project stay
+working directory -> where you make the changes
+staging area -> where the files are to make the commit
+branches -> separete your program in many different paths
+fork (GitHub) -> copy an project, that you cannot made change, and change it
+
+git config --global core.editor "atom -n "
+git config --global push.default upstream
+git config --global merge.conflictstyle diff3
+git config --global user.name "Hermeto"
+git config --global user.email "hermeto.lucas@gmail.com"
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=3600'
+
+git init -> start the git on that directory
+git status -> show the status of the staging area
+git log -> show all the modifies that have been committed
+git log --graph --oneline master -> show logs on a 'graphic'
+git checkout 1234 -> make the directory go back to an commit
+git add -> add some changes to the staging area
+git commit -> commit the changes made and save in the repository
+git commit --amend -> change the name of the most recent commit
+git diff 1234 4321 -> compare two id from git log
+git diff -> compare the
+git diff --staged -> compare the modifies between the staging area and the
+  repository
+git reset --hard -> remove all the changes from the working directory
+git reset --hard HEAD~1 -> remove the last commit made
+git merge master "branch" -> merge to branchs
+git show "commit_id" -> show all the changes made in this commit
+git remote -> show all the remote git's from this project
+git remote add origin "url.git" -> add a remote repository
+git push origin master -> add your changes to the remote repository
+git pull origin master -> get the remote repository
+git fetch -> Download the changes on the remote repository, creating a new
+  branch to you compare your master commits with the origin/master
+git blame "file" -> See who wrote every line

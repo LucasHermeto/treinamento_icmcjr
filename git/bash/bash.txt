@@ -1,0 +1,6 @@
+Para modificar o bash do terminal e poder visualizar melhor quando existe
+  algum repositório git apenas cole esses arquivos no home do linux.
+
+CUIDADO!!!!
+  Verifique antes se existe algo no seu .bashrc que seja necessário manter
+  como é o caso de algum 'export PATH=...' que esteja no final do arquivo
